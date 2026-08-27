@@ -1,39 +1,550 @@
 # AMIT-ROSE-HOUSE
 WE GIVE YOU BOUQUET EXPERIENCE IN GEN Z STYLE 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AMIT ROSE HOUSE</title>
+
+<style>
+:root{
+  --pink:#c96a9c;
+  --dark:#2c1b25;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#fff7fa;
+  color:var(--dark);
+}
+
+.container{
+  max-width:800px;
+  margin:auto;
+  padding:20px;
+}
+
+header{
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+h1,h2,h3,h4{
+  margin-top:0;
+}
+
+.form3d{
+  background:white;
+  padding:22px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:14px;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border:2px solid #ead5df;
+  border-radius:12px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:90px;
+}
+
 .order-mode{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:6px;
+  gap:14px;
+  margin:12px 0 18px;
+}
+
+.mode-section{
+  padding:16px;
+  margin:15px 0;
+  border:2px solid #efd8e3;
+  border-radius:18px;
+  background:#fff8fb;
+}
+
+.mode-section h4{
+  color:var(--pink);
 }
 
 .mode-card{
+  display:block;
+  color:#2c1b25;
+  text-align:left;
+  font-size:16px;
+  line-height:1.5;
   border:2px solid #e7cfdb;
   border-radius:14px;
-  padding:12px;
+  padding:14px;
   cursor:pointer;
-  background:#fff;
-  font-weight:800;
+  background:white;
 }
 
-.mode-card:has(input:checked){
-  border-color:#c96a9c;
-  box-shadow:0 6px 18px rgba(154,57,103,.15);
+.mode-card b{
+  color:#2c1b25;
+  font-size:17px;
+}
+
+.mode-card small{
+  display:block;
+  color:#674d5b;
+  font-size:13px;
+  margin-top:7px;
 }
 
 .mode-card input{
-  width:auto;
-  margin-right:7px;
+  width:20px;
+  height:20px;
+  margin-right:8px;
+  vertical-align:middle;
 }
 
 .hidden{
   display:none !important;
 }
 
-.payment-box{
-  margin-top:16px;
+.btn{
+  border:none;
   padding:14px;
-  border:2px dashed #e2bfd0;
-  border-radius:14px;
-  background:#fff8fb;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
 }
+
+.primary{
+  background:var(--pink);
+  color:white;
+}
+
+.secondary{
+  background:var(--dark);
+  color:white;
+}
+
+@media(max-width:600px){
+  .order-mode{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>🌹 AMIT ROSE HOUSE</h1>
+  <p>Handmade Ribbon Rose Bouquets</p>
+</header>
+
+<div class="container">
+
+<form
+  class="form3d"
+  id="orderForm"
+  name="bouquet-order"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+>
+
+<input type="hidden" name="form-name" value="bouquet-order">
+
+<p class="hidden">
+  <input name="bot-field">
+</p>
+
+<h2>Custom Order Form 🌹</h2>
+
+<label>Your Name</label>
+<input id="name" name="name" required placeholder="Enter your full name">
+
+<label>Mobile Number</label>
+<input id="phone" name="phone" type="tel" required placeholder="Enter your mobile number">
+
+<label>Rose Type</label>
+<select id="type" name="rose_type">
+  <option>Classic Ribbon Rose - ₹50/piece</option>
+  <option>Glitter Ribbon Rose - ₹60/piece</option>
+  <option>Mix / Both Types</option>
+</select>
+
+<label>Rose Colours</label>
+<input id="colors" name="rose_colours" required placeholder="Example: Baby Pink, White & Red">
+
+<label>How Many Roses?</label>
+<input id="qty" name="quantity" type="number" min="1" required>
+
+<label>When Do You Need It?</label>
+<input id="date" name="required_date" type="date" required>
+
+
+<div class="mode-section">
+
+<h4>🚚 Delivery or Pickup</h4>
+
+<div class="order-mode">
+
+<label class="mode-card">
+<input type="radio" name="order_type" value="Home Delivery" checked>
+<b>🛵 Home Delivery</b>
+<small>All Hooghly delivery available. ₹20 extra delivery charge.</small>
+</label>
+
+<label class="mode-card">
+<input type="radio" name="order_type" value="Self Pickup">
+<b>🏪 Self Pickup</b>
+<small>Collect your order from our Bhadreswar location.</small>
+</label>
+
+</div>
+
+</div>
+
+
+<div id="deliveryFields" class="mode-section">
+
+<h4>🛵 Delivery Details</h4>
+
+<label>Complete Delivery Address</label>
+<textarea
+id="address"
+name="delivery_address"
+required
+placeholder="House/Flat No., Road, Area, City/Town, PIN Code">
+</textarea>
+
+<label>Nearest Landmark</label>
+<input
+id="landmark"
+name="landmark"
+placeholder="Example: Near Bhadreswar Station">
+
+</div>
+
+
+<div id="pickupFields" class="mode-section hidden">
+
+<h4>🏪 Self Pickup Details</h4>
+
+<p>
+<b>Pickup Address:</b><br><br>
+106, GT Road, Rabindra Nagar,<br>
+Bhadreswar, Hooghly,<br>
+West Bengal – 712125
+</p>
+
+</div>
+
+
+<div class="mode-section">
+
+<h4>💳 Payment Option</h4>
+
+<div class="order-mode">
+
+<label class="mode-card">
+<input
+type="radio"
+name="payment_method"
+value="Cash on Delivery"
+checked>
+
+<b>💵 Cash on Delivery</b>
+
+<small>
+Order receive karne ke time cash payment karein.
+</small>
+</label>
+
+
+<label class="mode-card">
+<input
+type="radio"
+name="payment_method"
+value="Pay Online">
+
+<b>💳 Pay Online</b>
+
+<small>
+UPI / Card se online payment karein.
+</small>
+</label>
+
+</div>
+
+</div>
+
+
+<div id="onlinePaymentBox" class="mode-section hidden">
+
+<h4>💳 Pay Online</h4>
+
+<p>
+Razorpay connect karne ke baad yahan secure online payment open hoga.
+</p>
+
+<button
+type="button"
+class="btn secondary"
+id="payOnlineBtn"
+style="width:100%">
+Proceed to Pay Online
+</button>
+
+</div>
+
+
+<label>Anything Else to Add?</label>
+
+<textarea
+id="extra"
+name="extra_details"
+placeholder="Special decoration, message card, extra items, etc.">
+</textarea>
+
+
+<button
+class="btn primary"
+style="width:100%;margin-top:20px"
+type="submit">
+
+Place Order 🌹
+
+</button>
+
+</form>
+
+</div>
+
+
+<script>
+
+const deliveryFields =
+document.getElementById("deliveryFields");
+
+const pickupFields =
+document.getElementById("pickupFields");
+
+const address =
+document.getElementById("address");
+
+
+document
+.querySelectorAll('input[name="order_type"]')
+.forEach(function(radio){
+
+radio.addEventListener("change",function(){
+
+const isDelivery =
+document.querySelector(
+'input[name="order_type"]:checked'
+).value === "Home Delivery";
+
+deliveryFields.classList.toggle(
+"hidden",
+!isDelivery
+);
+
+pickupFields.classList.toggle(
+"hidden",
+isDelivery
+);
+
+address.required=isDelivery;
+
+});
+
+});
+
+
+const onlinePaymentBox =
+document.getElementById("onlinePaymentBox");
+
+
+document
+.querySelectorAll('input[name="payment_method"]')
+.forEach(function(radio){
+
+radio.addEventListener("change",function(){
+
+const isOnline =
+document.querySelector(
+'input[name="payment_method"]:checked'
+).value === "Pay Online";
+
+onlinePaymentBox.classList.toggle(
+"hidden",
+!isOnline
+);
+
+});
+
+});
+
+
+document
+.getElementById("payOnlineBtn")
+.addEventListener("click",function(){
+
+alert(
+"Razorpay Key ID connect karne ke baad yahan online payment checkout open hoga."
+);
+
+});
+
+
+document
+.getElementById("orderForm")
+.addEventListener("submit",async function(event){
+
+event.preventDefault();
+
+const form=event.target;
+
+const formData=new FormData(form);
+
+
+try{
+
+const response=await fetch("/",{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/x-www-form-urlencoded"
+},
+
+body:new URLSearchParams(formData).toString()
+
+});
+
+
+if(!response.ok){
+throw new Error("Order failed");
+}
+
+
+alert(
+"Order submitted successfully! 🌹"
+);
+
+
+const v=function(id){
+return document
+.getElementById(id)
+.value
+.trim();
+};
+
+
+const orderType=
+document.querySelector(
+'input[name="order_type"]:checked'
+).value;
+
+
+const paymentMethod=
+document.querySelector(
+'input[name="payment_method"]:checked'
+).value;
+
+
+let locationDetails="";
+
+
+if(orderType==="Home Delivery"){
+
+locationDetails=
+`DELIVERY ADDRESS:
+${v("address")}
+
+Landmark:
+${v("landmark") || "Not provided"}`;
+
+}else{
+
+locationDetails=
+`SELF PICKUP:
+106, GT Road,
+Rabindra Nagar,
+Bhadreswar, Hooghly,
+West Bengal – 712125`;
+
+}
+
+
+const message=
+`Hello Amit Rose House! 🌹
+
+NEW CUSTOM ORDER
+
+Name: ${v("name")}
+
+Mobile: ${v("phone")}
+
+Rose Type: ${v("type")}
+
+Colours: ${v("colors")}
+
+Quantity: ${v("qty")}
+
+Required Date: ${v("date")}
+
+Order Type: ${orderType}
+
+Payment Method: ${paymentMethod}
+
+${locationDetails}
+
+Extra Details:
+${v("extra") || "None"}`;
+
+window.open(
+"https://wa.me/919748346348?text="+
+encodeURIComponent(message),
+"_blank"
+);
+
+form.reset();
+
+}
+
+catch(error){
+
+alert(
+"Order submit nahi hua. Please try again."
+);
+
+console.error(error);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
